@@ -398,10 +398,9 @@ p {
   border-radius: 50%;
 } */
 .customers {
-/*   padding-top: 120px;
+  /*   padding-top: 120px;
   padding-bottom: 120px; */
   padding: 120px 0;
-
 }
 .customers-title {
   font-style: normal;
@@ -454,14 +453,13 @@ p {
   background-color: #2e2f42;
   padding-top: 100px;
   padding-bottom: 100px;
-  
 }
 
-.footer-content{
+.footer-content {
   display: flex;
-  align-items: baseline;   /* встановлює вирівнювання елементів у поперечному напрямку вздовж головної осі контейнера відносно базової лінії тексту першого рядка кожного елемента */
+  align-items: baseline; /* встановлює вирівнювання елементів у поперечному напрямку вздовж головної осі контейнера відносно базової лінії тексту першого рядка кожного елемента */
 }
-.call-to-action{
+.call-to-action {
   margin-right: 120px;
 }
 .logo-footer {
@@ -491,11 +489,11 @@ p {
   color: #ffffff;
   margin-bottom: 16px;
 }
-.social-list-footer{
+.social-list-footer {
   padding: 0;
-  gap: 16px; 
+  gap: 16px;
 }
-.social-list-item-footer{
+.social-list-item-footer {
   width: 40px;
   height: 40px;
 }
@@ -547,7 +545,8 @@ p {
   color: #ffffff;
   background-color: #404bbf;
   border: 1px solid transparent; /* для вимкнення кольору при ховері */
-  box-shadow:0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12); /* для визначення тіні для елемента при наведені мишкою */
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12); /* для визначення тіні для елемента при наведені мишкою */
 }
 
 .list {
@@ -588,12 +587,13 @@ p {
 .portfolio-card-item {
   width: calc((100% - 48px) / 3);
 }
-.portfolio-card-link{
+.portfolio-card-link {
   display: block;
 }
 .portfolio-card-link:hover,
-.portfolio-card-link:focus{
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+.portfolio-card-link:focus {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 .portfolio-card-item-conteiner {
@@ -604,4 +604,37 @@ p {
 .portfolio-title {
   margin: 0;
   margin-bottom: 8px; /* для визначення відступу між заголовком та параграфом */
+}
+
+.portfolio-img-wrapper{
+  display: block;
+  position: relative;
+  overflow: hidden;/* Робимо так, щоб все що не влазить в цей дів обрізалось. При цьому, ми навмисно поставили вниз наш overlay  */
+}
+
+.overlay {
+  display: block;
+  background-color: #4d5ae5;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #f4f4fd;
+  padding: 40px 32px 0 32px;
+  position: absolute;/* чепляється до найближчого батьківського relative */
+  left: 0;/* допомогає передвинути абсолютний елемент */
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;/* якщо тексту забагато, буде скрол */
+  transform: translate(0, 100%);/* Робимо так щоб він був знизу і потім міг виїзджати */
+  transition: transform 500ms linear ;/*Для анімації  transition показує що при яякісь події, у нас там при ховері,змінюється властивість transform. */
+
+}
+/* Просимо щоб при наведенні на елемент списку, у класа .overlay, змінювався  transform  */
+.portfolio-card-link:hover .overlay,
+.portfolio-card-link:focus .overlay
+{
+  transform: translate(0, 0);
 }
