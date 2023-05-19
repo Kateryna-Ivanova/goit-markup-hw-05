@@ -10,6 +10,7 @@ body {
 }
 :root {
   --accept-color: #434455;
+  --transition-duration-and-funk: 500ms linear;/* Змінна часу анімації */
 }
 img {
   display: block;
@@ -629,8 +630,8 @@ p {
   height: 100%;
   overflow: auto;/* якщо тексту забагато, буде скрол */
   transform: translate(0, 100%);/* Робимо так щоб він був знизу і потім міг виїзджати */
-  transition: transform 500ms linear ;/*Для анімації  transition показує що при яякісь події, у нас там при ховері,змінюється властивість transform. */
-
+  /* transition: transform 500ms linear ; *//*Для анімації  transition показує що при яякісь події, у нас там при ховері,змінюється властивість transform. */
+transition: var(--transition-duration-and-funk);/*Зверху в розділі :root задала змінну. Завдяки var() ввела ім'я змінної. За допомогою змінної можно буде робитизміни одназу на всьому сайті */
 }
 /* Просимо щоб при наведенні на елемент списку, у класа .overlay, змінювався  transform  */
 .portfolio-card-link:hover .overlay,
@@ -638,3 +639,31 @@ p {
 {
   transform: translate(0, 0);
 }
+
+
+/* /////////////////////////////////////////      MODAL-WINDOW        //////////////////////// */
+.back-drop{
+position: fixed;/* вирізається зі сторінки, позиціонується від вью порта */
+left: 0; /* без цих данних він би позиціонувався там, де ми його вказали у розмітці */
+top: 0;/* без цих данних він би позиціонувався там, де ми його вказали у розмітці */
+width: 100%;/* Розтягуємо на 100% вью порта */
+height: 100%;
+background-color: rgba(46, 47, 66, 0.4);
+z-index: 100;/* Задаємо великий, щоб точно нічого його не перекрило */
+}
+
+
+.modal{
+width: 408px;
+height: 576px;
+background: #FCFCFC;
+box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+border-radius: 4px;
+position: absolute;/* Так як у батьківського елементу стоїть position: fixed;(відмінний від static, цей елемент буде позиціонуватись від нього */
+
+}
+
+/* .modal-close-btn{
+
+}
+ */
