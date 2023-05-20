@@ -102,8 +102,10 @@ button {
   color: #2e2f42;
   line-height: 1.5; /* для визначення простору між рядками */
   letter-spacing: 0.02em; /* визначення відступів між літерами */
+}
+.current {
   position: relative;
-  /*  color: #404bbf; */
+  color: #404bbf;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору текстового контенту */
 }
 .current::after {
@@ -136,9 +138,6 @@ button {
 }
 .content-address {
   list-style: none;
-}
-.address-item {
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору текстового контенту; */
 }
 .address-link {
   font-family: "Roboto";
@@ -414,16 +413,8 @@ button {
   margin: 12px;
   fill: #f4f4fd;
 }
-/* .social-list-item {
-  display: block;
-  width: 40px;
-  height: 40px;
-  background-color: #4d5ae5;
-  border-radius: 50%;
-} */
+
 .customers {
-  /*   padding-top: 120px;
-  padding-bottom: 120px; */
   padding: 120px 0;
 }
 .customers-title {
