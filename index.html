@@ -26,9 +26,10 @@
                 <nav class="nav-header">
                     <a class="logo link" href="./index.html">Web<span class="logo-dark">Studio</span></a>
                     <ul class="list meny-list">
-                        <li class="meny-item"><a class="meny-link link" href="./index.html">Studio</a></li>
-                        <li class="meny-item"><a class="meny-link link" href="./portfolio.html">Portfolio</a></li>
-                        <li class="meny-item"><a class="meny-link link" href="">Contacts</a></li>
+                        <li class="meny-item"><a class="meny-link link current" href="./index.html">Studio</a></li>
+                        <li class="meny-item"><a class="meny-link link current" href="./portfolio.html">Portfolio</a>
+                        </li>
+                        <li class="meny-item"><a class="meny-link link current" href="">Contacts</a></li>
                     </ul>
                 </nav>
                 <address class="address">
@@ -49,7 +50,8 @@
             <section class="hero container">
                 <div class="container container-hero"> <!-- container-hero  -->
                     <h1 class="hero-title">Effective Solutions for Your Business</h1>
-                    <button class="hero-btn" type="button">Order Service</button>
+                    <button class="hero-btn" type="button" data-modal-open>Order Service</button>
+                    <!-- data-modal-open це атрибути за яким скрипт шукає елемент (кнопку відкриття модального вікна) -->
                 </div><!--///container-hero -->
 
             </section>
@@ -142,7 +144,7 @@
 
 
                                     </li>
-                                    <li class="social-list-item" >
+                                    <li class="social-list-item">
                                         <a class="social-list-link link">
                                             <svg class="social-list-icon" width="16" height="16">
                                                 <use href="./images/icons.svg#icon-twitter"></use>
@@ -397,15 +399,53 @@
 
         </footer>
     </div>
-    <div class="back-drop">
+    <div class="back-drop" data-modal>
         <div class="modal">
-            <button type="button" class="modal-close-btn"><!-- кнопкам які не відповідають за запит данних на сервер, ставимо type="button" -->
-    <svg class="cross-icon" width="8" height="8">
-        <use href="./images/icons.svg#icon-cross"></use>
-    </svg>
+            <button type="button" class="modal-close-btn"
+                data-modal-close><!-- кнопкам які не відповідають за запит данних на сервер, ставимо type="button", data-modal-close це атрибути за яким скрипт шукає елемент -->
+                <svg class="cross-icon" width="8" height="8">
+                    <use href="./images/icons.svg#icon-cross"></use>
+                </svg>
             </button>
         </div>
     </div>
+    <script src="./js/modal.js"></script><!-- підключаємо скрипт -->
 </body>
 
 </html>
+
+
+
+<!-- Відкриття/закриття модального вікна
+Модальне вікно з формою заявки відкривається по натисканню на кнопку "Замовити послугу". Для того щоб скрипт спрацював,
+необхідно додати до розмітки спеціальні атрибути, за якими скрипт шукає елементи:
+
+data-modal-open - на кнопку відкриття модального вікна.
+data-modal-close - на кнопку закриття модального вікна.
+data-modal - на бекдроп модального вікна.
+Після чого, перед закриваючим тегом body додати тег script з посиланням на файл скрипту для модально вікна.
+
+Створити файл modal.js. в папці js
+Скопіювати туди цей скрипт
+
+(() => {
+const refs = {
+openModalBtn: document.querySelector("[data-modal-open]"),
+closeModalBtn: document.querySelector("[data-modal-close]"),
+modal: document.querySelector("[data-modal]"),
+};
+
+refs.openModalBtn.addEventListener("click", toggleModal);
+refs.closeModalBtn.addEventListener("click", toggleModal);
+
+function toggleModal() {
+refs.modal.classList.toggle("is-hidden");
+}
+})();
+
+Все це просто додає та прибираю додатковий клас .is-hidden при натиснені на елементи 
+Потрібно описати клас у якому з'являється додатковий класis-hidden 
+.back-drop.is-hidden{
+    opacity: 0; 
+    visibility: hidden; 
+    pointer-events: none;}  (дивись css) -->

@@ -10,7 +10,7 @@ body {
 }
 :root {
   --accept-color: #434455;
-  --transition-duration-and-funk: 500ms linear;/* Змінна часу анімації */
+  --transition-duration-and-funk: 500ms linear; /* Змінна часу анімації */
 }
 img {
   display: block;
@@ -22,8 +22,8 @@ h4,
 p {
   margin: 0;
 }
-button{
-  cursor: pointer;/* всім кнопкам еа сторінці задан курсор */
+button {
+  cursor: pointer; /* всім кнопкам еа сторінці задан курсор */
 }
 
 .container {
@@ -90,6 +90,10 @@ button{
   /*   padding-right: 332px; */
   padding-left: 0;
 }
+.meny-item {
+  position: relative;
+  color: #404bbf;
+}
 .meny-link {
   padding: 24px 0;
   font-family: "Roboto";
@@ -101,6 +105,16 @@ button{
   color: #2e2f42;
   line-height: 1.5; /* для визначення простору між рядками */
   letter-spacing: 0.02em; /* визначення відступів між літерами */
+}
+.current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 4px;
+  background-color: #404bbf;
+  border-radius: 2px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору текстового контенту */
 }
 
 .meny-link:hover,
@@ -122,6 +136,9 @@ button{
 }
 .content-address {
   list-style: none;
+}
+.address-item {
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору текстового контенту; */
 }
 .address-link {
   font-family: "Roboto";
@@ -199,6 +216,7 @@ button{
   color: #ffffff;
   align-items: center;
   letter-spacing: 0.04em;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-btn:hover,
 .hero-btn:focus {
@@ -384,6 +402,7 @@ button{
   border-radius: 50%;
   align-items: center;
   justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору фону елемента */
 }
 .social-list-link:hover,
 .social-list-link:focus {
@@ -429,10 +448,14 @@ button{
   display: block;
   width: 168px;
   height: 88px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору рамки елемента та для плавної зміни кольору іконки */
 }
 .customers-icons {
   display: block;
   margin: 0 auto;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору рамки елемента та для плавної зміни кольору іконки */
 }
 
 .customers-list-link {
@@ -576,10 +599,12 @@ button{
   justify-content: center;
   padding: 0;
 }
-/* .btn-portfolio-item{
-  width: calc((100% - 4*24) / 5);
-
-} */
+.btn-portfolio-item {
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); /*  для плавної зміни властивостей; */
+}
 .portfolio-card-list {
   padding: 0;
   display: flex;
@@ -590,6 +615,7 @@ button{
 }
 .portfolio-card-item {
   width: calc((100% - 48px) / 3);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної появи тіні */
 }
 .portfolio-card-link {
   display: block;
@@ -610,10 +636,10 @@ button{
   margin-bottom: 8px; /* для визначення відступу між заголовком та параграфом */
 }
 
-.portfolio-img-wrapper{
+.portfolio-img-wrapper {
   display: block;
   position: relative;
-  overflow: hidden;/* Робимо так, щоб все що не влазить в цей дів обрізалось. При цьому, ми навмисно поставили вниз наш overlay  */
+  overflow: hidden; /* Робимо так, щоб все що не влазить в цей дів обрізалось. При цьому, ми навмисно поставили вниз наш overlay  */
 }
 
 .overlay {
@@ -626,66 +652,100 @@ button{
   letter-spacing: 0.02em;
   color: #f4f4fd;
   padding: 40px 32px 0 32px;
-  position: absolute;/* чепляється до найближчого батьківського relative */
-  left: 0;/* допомогає передвинути абсолютний елемент */
+  padding: 40px 32px;
+  position: absolute; /* чепляється до найближчого батьківського relative */
+  left: 0; /* допомогає передвинути абсолютний елемент */
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;/* якщо тексту забагато, буде скрол */
-  transform: translate(0, 100%);/* Робимо так щоб він був знизу і потім міг виїзджати */
-  /* transition: transform 500ms linear ; *//*Для анімації  transition показує що при яякісь події, у нас там при ховері,змінюється властивість transform. */
-transition: var(--transition-duration-and-funk);/*Зверху в розділі :root задала змінну. Завдяки var() ввела ім'я змінної. За допомогою змінної можно буде робитизміни одназу на всьому сайті */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); /* що дозволяє задавати анімаційний ефект для зміни значень властивостей стилю */
+  overflow: auto; /* якщо тексту забагато, буде скрол */
+  transform: translate(
+    0,
+    100%
+  ); /* Робимо так щоб він був знизу і потім міг виїзджати */
+  /* transition: transform 500ms linear ; */ /*Для анімації  transition показує що при яякісь події, у нас там при ховері,змінюється властивість transform. */
+  transition: var(
+    --transition-duration-and-funk
+  ); /*Зверху в розділі :root задала змінну. Завдяки var() ввела ім'я змінної. За допомогою змінної можно буде робитизміни одназу на всьому сайті */
 }
+
 /* Просимо щоб при наведенні на елемент списку, у класа .overlay, змінювався  transform  */
 .portfolio-card-link:hover .overlay,
-.portfolio-card-link:focus .overlay
-{
+.portfolio-card-link:focus .overlay {
   transform: translate(0, 0);
+  transform: translateY(0%);
 }
-
 
 /* /////////////////////////////////////////      MODAL-WINDOW        //////////////////////// */
-.back-drop{
-position: fixed;/* вирізається зі сторінки, позиціонується від вью порта */
-left: 0; /* без цих данних він би позиціонувався там, де ми його вказали у розмітці */
-top: 0;/* без цих данних він би позиціонувався там, де ми його вказали у розмітці */
-width: 100%;/* Розтягуємо на 100% вью порта */
-height: 100%;
-background-color: rgba(46, 47, 66, 0.4);
-z-index: 100;/* Задаємо великий, щоб точно нічого його не перекрило */
+.back-drop {
+  position: fixed; /* вирізається зі сторінки, позиціонується від вью порта */
+  left: 0; /* без цих данних він би позиціонувався там, де ми його вказали у розмітці */
+  top: 0; /* без цих данних він би позиціонувався там, де ми його вказали у розмітці */
+  width: 100%; /* Розтягуємо на 100% вью порта */
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  z-index: 100; /* Задаємо великий, щоб точно нічого його не перекрило */
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1); /*  для плавної зміни свою прозорості і видимості елемента */
 }
 
+.back-drop.is-hidden {
+  /*шукає елемент у якого є  ці 2 класи:.back-drop.is-hidden. Тобто, цей селектор спрацює тільки якщо на елементі будуть ці два класи   */
+  opacity: 0; /*Робимо повністю прозорим щоб не бачити */
+  visibility: hidden; /* щоб приховати */
+  pointer-events: none; /* щоб наша мишка не реагувала на нього, коли він скритий.Щоб кліки мишкой проходили цей елемент.
+  Тому що цей елемент фіксований, і знаходиться над усім на сторінці */
+}
 
-.modal{
-width: 408px;
-height: 576px;
-background: #FCFCFC;
-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
-border-radius: 4px;
-position: absolute;/* Так як у батьківського елементу стоїть position: fixed;(відмінний від static, цей елемент буде позиціонуватись від нього */
-top: 50%;
-left: 50%;/* Зівдяки цьому верхній лівий кут буде по центру, а не центр елемента  */
-transform: translate(-50%, -50%);/* зміщуємо .modal вліво на -50% його ширини, і вверх на -50% висоти.  
+.modal {
+  min-height: 576px; /*  для визначення мінімальної висоти елемента на веб-сторінці */
+  width: 408px;
+  background: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: absolute; /* Так як у батьківського елементу стоїть position: fixed;(відмінний від static, цей елемент буде позиціонуватись від нього */
+  top: 50%;
+  left: 50%; /* Зівдяки цьому верхній лівий кут буде по центру, а не центр елемента  */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* зміщуємо .modal вліво на -50% його ширини, і вверх на -50% висоти.  
  Якщо задати transform: translate(50%, 50%), то зміститься на вроаво на 50% його ширини, ф вниз а 50% висоти  */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); /* що дозволяє задавати анімаційний ефект для зміни значень властивостей стилю */
 }
 
-.modal-close-btn{
-padding: 0;
-width: 24px;
-height: 24px;
-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-background: #E7E9FC;
-border: 1px solid rgba(0, 0, 0, 0.1);
-border-radius:50%;/* Робимо круглі края */
-display: flex;
-justify-content: center;/* Твоя дитина по головній осі буде в центрі */
-align-items: center;/* Твоя дитина по допоміжній осі буде в центрі */
-position: absolute;/* виймаємо з контенту.Щоб вона нічого не зміщувала, і нікому не заважала */
-/* Буде позиціонуватись від .modal, тому що він має position відмінний від static*/
-top: 24px;
-right: 24px;/* буде відштовхуватись справа */
+.modal-close-btn {
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%; /* Робимо круглі края */
+  display: flex;
+  justify-content: center; /* Твоя дитина по головній осі буде в центрі */
+  align-items: center; /* Твоя дитина по допоміжній осі буде в центрі */
+  position: absolute; /* виймаємо з контенту.Щоб вона нічого не зміщувала, і нікому не заважала */
+  /* Буде позиціонуватись від .modal, тому що він має position відмінний від static*/
+  top: 24px;
+  right: 24px; /* буде відштовхуватись справа */
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.cross-icon{
-  fill: #2E2F42;
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: #404bbf;
+  border: none;
+}
+
+.cross-icon {
+  fill: #2e2f42;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1); /*  для плавної зміни кольору */
+}
+.cross-icon:hover,
+.cross-icon:focus {
+  fill: #ffffff;
 }
