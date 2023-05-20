@@ -458,7 +458,8 @@ button {
   justify-content: center;
   fill: #8e8f99;
   color: #8e8f99;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної зміни кольору рамки елемента та для плавної зміни кольору іконки */
 }
 .customers-list-link:hover,
 .customers-list-link:focus {
@@ -590,11 +591,12 @@ button {
   justify-content: center;
   padding: 0;
 }
-.btn-portfolio-item {
+.btn-portfolio {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); /*  для плавної зміни властивостей; */
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); /* для плавної появи тіні */
 }
 .portfolio-card-list {
   padding: 0;
@@ -610,11 +612,13 @@ button {
 }
 .portfolio-card-link {
   display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); /*  для плавної появи тіні */
 }
 .portfolio-card-link:hover,
 .portfolio-card-link:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+  transform: translateY(0%);
 }
 
 .portfolio-card-item-conteiner {
@@ -659,6 +663,7 @@ button {
   transition: var(
     --transition-duration-and-funk
   ); /*Зверху в розділі :root задала змінну. Завдяки var() ввела ім'я змінної. За допомогою змінної можно буде робитизміни одназу на всьому сайті */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); /*  що дозволяє задавати анімаційний ефект для зміни значень властивостей стилю */
 }
 
 /* Просимо щоб при наведенні на елемент списку, у класа .overlay, змінювався  transform  */
@@ -730,6 +735,7 @@ button {
 .modal-close-btn:focus {
   background-color: #404bbf;
   border: none;
+  fill: #ffffff;
 }
 
 .cross-icon {
@@ -740,3 +746,8 @@ button {
 .cross-icon:focus {
   fill: #ffffff;
 }
+/* .modal-close-btn .cross-icon:hover,
+.modal-close-btn .cross-icon:focus {
+  fill: #ffffff;
+}
+ */
