@@ -22,6 +22,9 @@ h4,
 p {
   margin: 0;
 }
+button{
+  cursor: pointer;/* всім кнопкам еа сторінці задан курсор */
+}
 
 .container {
   margin: 0 auto;
@@ -660,10 +663,29 @@ background: #FCFCFC;
 box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 4px;
 position: absolute;/* Так як у батьківського елементу стоїть position: fixed;(відмінний від static, цей елемент буде позиціонуватись від нього */
-
+top: 50%;
+left: 50%;/* Зівдяки цьому верхній лівий кут буде по центру, а не центр елемента  */
+transform: translate(-50%, -50%);/* зміщуємо .modal вліво на -50% його ширини, і вверх на -50% висоти.  
+ Якщо задати transform: translate(50%, 50%), то зміститься на вроаво на 50% його ширини, ф вниз а 50% висоти  */
 }
 
-/* .modal-close-btn{
-
+.modal-close-btn{
+padding: 0;
+width: 24px;
+height: 24px;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+background: #E7E9FC;
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius:50%;/* Робимо круглі края */
+display: flex;
+justify-content: center;/* Твоя дитина по головній осі буде в центрі */
+align-items: center;/* Твоя дитина по допоміжній осі буде в центрі */
+position: absolute;/* виймаємо з контенту.Щоб вона нічого не зміщувала, і нікому не заважала */
+/* Буде позиціонуватись від .modal, тому що він має position відмінний від static*/
+top: 24px;
+right: 24px;/* буде відштовхуватись справа */
 }
- */
+
+.cross-icon{
+  fill: #2E2F42;
+}
